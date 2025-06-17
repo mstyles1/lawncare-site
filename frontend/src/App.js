@@ -1,15 +1,16 @@
-// src/App.js
 import React from 'react';
+import { Routes, Route } from 'react-router-dom'; // no BrowserRouter here
 import ClientForm from './components/ClientForm.jsx';
+import LandingPage from './components/LandingPage.jsx';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <ClientForm />
-    </div>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/clientform" element={<ClientForm />} />
+    </Routes>
   );
 }
 
-export default App;
 
 
