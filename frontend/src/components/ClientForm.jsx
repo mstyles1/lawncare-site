@@ -48,7 +48,7 @@ export default function ClientForm() {
     e.preventDefault();
 
     try {
-      const res = await fetch("https://formspree.io/f/yourformid", { /*formspree link goes here*/
+      const res = await fetch("https://formspree.io/f/xrbklboa", { /*formspree link goes here*/
         method: "POST",
         headers: {
           "Content-Type": "application/json",
