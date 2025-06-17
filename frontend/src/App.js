@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom'; // no BrowserRouter here
+import { Routes, Route } from 'react-router-dom';
 import ClientForm from './components/ClientForm.jsx';
 import LandingPage from './components/LandingPage.jsx';
 
