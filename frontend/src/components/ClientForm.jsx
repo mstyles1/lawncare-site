@@ -1,44 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 export default function ClientForm() {
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    address: '',
-    yardSize: '',
-    gateSize: '',
-    gateInstructions: '',
-    terrain: '',
+    name: "",
+    phone: "",
+    email: "",
+    address: "",
+    yardSize: "",
+    gateSize: "",
+    gateInstructions: "",
+    terrain: "",
     yardFeatures: [],
-    hasPets: '',
+    hasPets: "",
     services: [],
-    otherNotes: ''
+    otherNotes: "",
   });
 
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
+  const [otherService, setOtherService] = useState("");
+  const [otherFeature, setOtherFeature] = useState("");
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
-    if (type === 'checkbox' && name === 'yardFeatures') {
-      setFormData(prev => ({
+    if (type === "checkbox" && name === "yardFeatures") {
+      setFormData((prev) => ({
         ...prev,
         yardFeatures: checked
           ? [...prev.yardFeatures, value]
-          : prev.yardFeatures.filter(v => v !== value)
+          : prev.yardFeatures.filter((v) => v !== value),
       }));
-    } else if (type === 'checkbox' && name === 'services') {
-      setFormData(prev => ({
+    } else if (type === "checkbox" && name === "services") {
+      setFormData((prev) => ({
         ...prev,
         services: checked
           ? [...prev.services, value]
-          : prev.services.filter(v => v !== value)
+          : prev.services.filter((v) => v !== value),
       }));
-    } else if (type === 'radio') {
-      setFormData(prev => ({ ...prev, [name]: value }));
+    } else if (type === "radio") {
+      setFormData((prev) => ({ ...prev, [name]: value }));
     } else {
-      setFormData(prev => ({ ...prev, [name]: value }));
+      setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
 
@@ -46,51 +48,86 @@ export default function ClientForm() {
     e.preventDefault();
 
     try {
-      const res = await fetch('http://localhost:3001/submit-client', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("https://formspree.io/f/yourformid", { /*formspree link goes here*/
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify(formData),
       });
 
-      const result = await res.json();
       if (res.ok) {
-        setMessage('✅ Submitted! We’ll be in touch soon.');
+        setMessage("✅ Submitted! Thanks for contacting us.");
         setFormData({
-          name: '',
-          phone: '',
-          email: '',
-          address: '',
-          yardSize: '',
-          gateSize: '',
-          gateInstructions: '',
-          terrain: '',
+          name: "",
+          phone: "",
+          email: "",
+          address: "",
+          yardSize: "",
+          gateSize: "",
+          gateInstructions: "",
+          terrain: "",
           yardFeatures: [],
-          hasPets: '',
+          hasPets: "",
           services: [],
-          otherNotes: ''
+          otherNotes: "",
         });
       } else {
-        setMessage(result.error || 'Submission failed.');
+        const data = await res.json();
+        setMessage(data.error || "Submission failed.");
       }
     } catch (error) {
-      setMessage('Error connecting to server.');
+      setMessage("Error connecting to Formspree.");
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <h2>🌿 Get a Free Lawn Care Estimate</h2>
-      <p>Just answer a few quick questions to help us get a feel for your property.</p>
+      <p>
+        Just answer a few quick questions to help us get a feel for your
+        property.
+      </p>
 
       <h3>Contact Info</h3>
-      <input name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
-      <input name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange} required />
-      <input name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-      <input name="address" placeholder="Property Address" value={formData.address} onChange={handleChange} required />
+      <input
+        name="name"
+        placeholder="Name"
+        value={formData.name}
+        onChange={handleChange}
+        required
+      />
+      <input
+        name="phone"
+        placeholder="Phone Number"
+        value={formData.phone}
+        onChange={handleChange}
+        required
+      />
+      <input
+        name="email"
+        placeholder="Email"
+        value={formData.email}
+        onChange={handleChange}
+        required
+      />
+      <input
+        name="address"
+        placeholder="Property Address"
+        value={formData.address}
+        onChange={handleChange}
+        required
+      />
 
       <h3>About Your Yard</h3>
       <label>How big is your yard?</label>
-      <select name="yardSize" value={formData.yardSize} onChange={handleChange} required>
+      <select
+        name="yardSize"
+        value={formData.yardSize}
+        onChange={handleChange}
+        required
+      >
         <option value="">Select one</option>
         <option value="¼ acre or less">¼ acre or less</option>
         <option value="½ acre">½ acre</option>
@@ -108,7 +145,12 @@ export default function ClientForm() {
         <option value="Not sure">Not sure</option>
       </select>
 
-      <input name="gateInstructions" placeholder="Gate code/instructions (if any)" value={formData.gateInstructions} onChange={handleChange} />
+      <input
+        name="gateInstructions"
+        placeholder="Gate code/instructions (if any)"
+        value={formData.gateInstructions}
+        onChange={handleChange}
+      />
 
       <label>What’s the terrain like?</label>
       <select name="terrain" value={formData.terrain} onChange={handleChange}>
@@ -121,7 +163,13 @@ export default function ClientForm() {
 
       <label>Anything in the yard we should know about?</label>
       <div>
-        {["Trampoline", "Pool or pond", "Garden beds", "Playground equipment", "Tree stumps or large roots"].map(feature => (
+        {[
+          "Trampoline",
+          "Pool or pond",
+          "Garden beds",
+          "Playground equipment",
+          "Tree stumps or large roots",
+        ].map((feature) => (
           <label key={feature}>
             <input
               type="checkbox"
@@ -134,12 +182,16 @@ export default function ClientForm() {
           </label>
         ))}
         <input
-          name="yardFeatures"
-          value="Other"
+          name="otherFeature"
+          value={otherFeature}
           placeholder="Other"
-          onChange={(e) => {
-            if (e.target.value && !formData.yardFeatures.includes(e.target.value)) {
-              setFormData(prev => ({ ...prev, yardFeatures: [...prev.yardFeatures, e.target.value] }));
+          onChange={(e) => setOtherFeature(e.target.value)}
+          onBlur={() => {
+            if (otherFeature && !formData.yardFeatures.includes(otherFeature)) {
+              setFormData((prev) => ({
+                ...prev,
+                yardFeatures: [...prev.yardFeatures, otherFeature],
+              }));
             }
           }}
         />
@@ -147,17 +199,35 @@ export default function ClientForm() {
 
       <h3>Pets</h3>
       <label>
-        <input type="radio" name="hasPets" value="No" checked={formData.hasPets === "No"} onChange={handleChange} />
+        <input
+          type="radio"
+          name="hasPets"
+          value="No"
+          checked={formData.hasPets === "No"}
+          onChange={handleChange}
+        />
         No
       </label>
       <label>
-        <input type="radio" name="hasPets" value="Yes" checked={formData.hasPets === "Yes"} onChange={handleChange} />
+        <input
+          type="radio"
+          name="hasPets"
+          value="Yes"
+          checked={formData.hasPets === "Yes"}
+          onChange={handleChange}
+        />
         Yes
       </label>
 
       <h3>What services are you looking for?</h3>
       <div>
-        {["Regular mowing & edging", "Weed control", "Mulch installation", "Yard cleanup", "Aeration"].map(service => (
+        {[
+          "Regular mowing & edging",
+          "Weed control",
+          "Mulch installation",
+          "Yard cleanup",
+          "Aeration",
+        ].map((service) => (
           <label key={service}>
             <input
               type="checkbox"
@@ -170,19 +240,27 @@ export default function ClientForm() {
           </label>
         ))}
         <input
-          name="services"
-          value="Other"
+          name="otherService"
+          value={otherService}
           placeholder="Other"
-          onChange={(e) => {
-            if (e.target.value && !formData.services.includes(e.target.value)) {
-              setFormData(prev => ({ ...prev, services: [...prev.services, e.target.value] }));
+          onChange={(e) => setOtherService(e.target.value)}
+          onBlur={() => {
+            if (otherService && !formData.services.includes(otherService)) {
+              setFormData((prev) => ({
+                ...prev,
+                services: [...prev.services, otherService],
+              }));
             }
           }}
         />
       </div>
 
       <label>Anything else you'd like us to know?</label>
-      <textarea name="otherNotes" value={formData.otherNotes} onChange={handleChange} />
+      <textarea
+        name="otherNotes"
+        value={formData.otherNotes}
+        onChange={handleChange}
+      />
 
       <button type="submit">Submit</button>
       <p>{message}</p>
