@@ -85,11 +85,15 @@ export default function ClientForm() {
   return (
     <div className="form-box">
       <form onSubmit={handleSubmit}>
-        <div className="form-box-header">
           <h2>🌿 Get a Free Lawn Care Estimate</h2>
+    
+        <div className="form-disclosure">
           <p>
             Just answer a few quick questions to help us get a feel for your
-            property.
+            property. 
+            
+            If your yard is 1 acre or larger, we will reach out to
+            schedule an in-person quote.
           </p>
         </div>
 
