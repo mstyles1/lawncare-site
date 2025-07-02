@@ -2,6 +2,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import LandingPage from "./components/LandingPage.jsx";
 import AboutPage from "./components/AboutPage.jsx";
 import ClientForm from "./components/ClientForm.jsx";
+import './App.css';
 
 export default function App() {
   return (
