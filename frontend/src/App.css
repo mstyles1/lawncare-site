@@ -57,6 +57,7 @@ body {
 
 .form-box-header {
     background-color: #2e8b57;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 form h2,
@@ -112,6 +113,6 @@ form button[type="submit"]:hover {
 
 form p {
   margin-top: 1rem;
-  color: #2e8b57;
+  color: white;
   font-weight: bold;
 }
