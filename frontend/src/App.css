@@ -13,9 +13,9 @@ body {
   background-color: #f9f9f9;
   font-family: sans-serif;
   background-image: url("../public/images/grass-background.jpg");
-  background-size: cover;        /* or contain */
+  background-size: cover; /* or contain */
   background-repeat: no-repeat;
-  background-attachment: fixed;  /* keeps it in place while scrolling */
+  background-attachment: fixed; /* keeps it in place while scrolling */
   background-position: center;
   min-height: 100vh;
 }
@@ -57,12 +57,30 @@ body {
   color: white;
   text-decoration: none;
   font-weight: bold;
-  font-family: 'Titler';
+  font-family: "Titler";
   font-size: 30px;
 }
 
 .navbar a:hover {
   text-decoration: underline;
+}
+
+/* Landing Page */
+
+.title-box {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  max-width: 800px;
+  width: 100%;}
+
+.title-box h1 {
+  color: #2e8b57;
+  font-size: 2.5rem;
+  margin: 0;
+  text-align: center;
 }
 
 /* Client Form */
@@ -74,7 +92,7 @@ h3 {
   text-align: center;
   color: white;
   margin-bottom: 5px;
-  font-family: 'Titler';
+  font-family: "Titler";
 }
 
 .form-disclosure {
@@ -125,12 +143,11 @@ form button[type="submit"]:hover {
 }
 
 @font-face {
-  font-family: 'Titler';
-  src: url('./fonts/OregonLdoDemibold-x3qR.ttf') format('truetype');
+  font-family: "Titler";
+  src: url("./fonts/OregonLdoDemibold-x3qR.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
-
 
 @media (max-width: 600px) {
   /* Styles for screens 600px wide or less */
@@ -154,4 +171,3 @@ form button[type="submit"]:hover {
     font-size: 1rem;
   }
 }
-
