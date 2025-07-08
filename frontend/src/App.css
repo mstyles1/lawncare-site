@@ -116,18 +116,23 @@ form textarea {
   font-size: 1rem;
 }
 
-form label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #333;
-  font-weight: bold;
+/* For checkbox/radio labels */
+.checkbox-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  padding: 0.2rem 0;
+  flex-wrap: wrap;
 }
 
-form label input[type="checkbox"],
-form label input[type="radio"] {
-  margin-right: 0.5rem;
-  vertical-align: middle;
+.checkbox-row input[type="checkbox"],
+.checkbox-row input[type="radio"] {
+  margin-left: 1rem;
+  flex-shrink: 0;
 }
+
+
 
 form button[type="submit"] {
   background-color: #175808;
