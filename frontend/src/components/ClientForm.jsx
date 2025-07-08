@@ -85,14 +85,12 @@ export default function ClientForm() {
   return (
     <div className="form-box">
       <form onSubmit={handleSubmit}>
-          <h2>🌿 Get a Free Lawn Care Estimate</h2>
-    
+        <h2>🌿 Get a Free Lawn Care Estimate</h2>
+
         <div className="form-disclosure">
           <p>
             Just answer a few quick questions to help us get a feel for your
-            property. 
-            
-            If your yard is 1 acre or larger, we will reach out to
+            property. If your yard is 1 acre or larger, we will reach out to
             schedule an in-person quote.
           </p>
         </div>
@@ -183,7 +181,8 @@ export default function ClientForm() {
             "Playground equipment",
             "Tree stumps or large roots",
           ].map((feature) => (
-            <label key={feature}>
+            <div className="checkbox-row" key={feature}>
+              <span>{feature}</span>
               <input
                 type="checkbox"
                 name="yardFeatures"
@@ -191,8 +190,7 @@ export default function ClientForm() {
                 checked={formData.yardFeatures.includes(feature)}
                 onChange={handleChange}
               />
-              {feature}
-            </label>
+            </div>
           ))}
           <input
             name="otherFeature"
@@ -213,28 +211,6 @@ export default function ClientForm() {
           />
         </div>
 
-        <h3>Pets</h3>
-        <label>
-          <input
-            type="radio"
-            name="hasPets"
-            value="No"
-            checked={formData.hasPets === "No"}
-            onChange={handleChange}
-          />
-          No
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="hasPets"
-            value="Yes"
-            checked={formData.hasPets === "Yes"}
-            onChange={handleChange}
-          />
-          Yes
-        </label>
-
         <h3>What services are you looking for?</h3>
         <div>
           {[
@@ -244,7 +220,8 @@ export default function ClientForm() {
             "Yard cleanup",
             "Aeration",
           ].map((service) => (
-            <label key={service}>
+            <div className="checkbox-row" key={service}>
+              <span>{service}</span>
               <input
                 type="checkbox"
                 name="services"
@@ -252,8 +229,7 @@ export default function ClientForm() {
                 checked={formData.services.includes(service)}
                 onChange={handleChange}
               />
-              {service}
-            </label>
+            </div>
           ))}
           <input
             name="otherService"

@@ -120,17 +120,21 @@ form textarea {
 .checkbox-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center;           /* ✅ ensures vertical centering */
   margin-bottom: 0.75rem;
-  padding: 0.2rem 0;
-  flex-wrap: wrap;
+  padding: 0.25rem 0;
+  font-size: 1rem;
+  line-height: 1.5;              /* ✅ consistent line height */
 }
 
 .checkbox-row input[type="checkbox"],
 .checkbox-row input[type="radio"] {
   margin-left: 1rem;
-  flex-shrink: 0;
+  transform: translateY(1px);    /* ✅ visually centers box with text */
+  height: 18px;                  /* ✅ consistent height */
+  width: 18px;
 }
+
 
 
 
