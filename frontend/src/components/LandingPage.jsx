@@ -4,7 +4,7 @@ export default function LandingPage() {
   return (
     <div className="landing">
       <div className="title-box">
-        <h1>Welcome to F & S Lawncare</h1>
+        <img src="../images/lawncare-logo.png" alt="F & S Lawncare logo" className="logo" />
       </div>
 
       <div className="landing-box">
