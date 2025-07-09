@@ -8,7 +8,6 @@
 html,
 body {
   width: 100%;
-  height: 100%;
   overflow-x: hidden;
   background-color: #f9f9f9;
   font-family: sans-serif;
@@ -44,26 +43,30 @@ body {
   color: black;
 }
 
-/* Navbar */
-.navbar {
-  display: flex;
-  gap: 1rem;
-  padding: 1rem;
-  background-color: #175808;
-  flex-wrap: wrap;
+/* Floating Tab */
+.floating-tab {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: rgba(23, 88, 8, 0.9);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  font-weight: bold;
 }
 
-.navbar a {
+.floating-tab a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
-  font-family: "Titler";
-  font-size: 30px;
+  margin: 0 0.5rem;
 }
 
-.navbar a:hover {
+.floating-tab a:hover {
   text-decoration: underline;
 }
+
 
 /* Landing Page */
 .title-box {

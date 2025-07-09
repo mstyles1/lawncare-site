@@ -1,14 +1,18 @@
 import { Routes, Route, Link } from "react-router-dom";
 import LandingPage from "./components/LandingPage.jsx";
 import ClientForm from "./components/ClientForm.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 import './App.css';
 
 export default function App() {
   return (
     <div className="app-container">
-      <div className="navbar">
-        <Link to="/">Home</Link>
-        <Link to="/clientform">Contact</Link>
+      <ScrollToTop />
+
+      <div className="floating-tab">
+        <Link to="/">🏠 Home</Link>
+        <span> | </span>
+        <Link to="/clientform">💬 Get Estimate</Link>
       </div>
 
       <main>
@@ -24,4 +28,3 @@ export default function App() {
     </div>
   );
 }
-
