@@ -212,6 +212,18 @@ form button[type="submit"]:hover {
   box-shadow: 0 10px 6px rgba(0, 0, 0, 0.2);
 }
 
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  background-color: #175808;
+  color: white;
+  border-top: 2px solid rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+
+/* Media */
 @font-face {
   font-family: "Titler";
   src: url("./fonts/OregonLdoDemibold-x3qR.ttf") format("truetype");

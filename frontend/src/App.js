@@ -17,6 +17,10 @@ export default function App() {
           <Route path="/clientform" element={<ClientForm />} />
         </Routes>
       </main>
+
+      <footer className="footer">
+        <p>&copy; {new Date().getFullYear()} F & S Lawn Care. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
