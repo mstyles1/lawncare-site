@@ -116,27 +116,28 @@ form textarea {
   font-size: 1rem;
 }
 
-/* For checkbox/radio labels */
+label {
+  font-size: 1rem;
+  font-weight: 900;
+}
+
 .checkbox-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;           /* ✅ ensures vertical centering */
+  align-items: center; 
   margin-bottom: 0.75rem;
   padding: 0.25rem 0;
   font-size: 1rem;
-  line-height: 1.5;              /* ✅ consistent line height */
+  line-height: 1.5; 
 }
 
 .checkbox-row input[type="checkbox"],
 .checkbox-row input[type="radio"] {
-  margin-left: 1rem;
-  transform: translateY(1px);    /* ✅ visually centers box with text */
-  height: 18px;                  /* ✅ consistent height */
+  margin-left: 1rem;  
+  transform: translateY(1px); 
+  height: 18px; 
   width: 18px;
 }
-
-
-
 
 form button[type="submit"] {
   background-color: #175808;

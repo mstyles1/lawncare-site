@@ -211,7 +211,8 @@ export default function ClientForm() {
           />
         </div>
 
-        <h3>What services are you looking for?</h3>
+        <h3>Services</h3>
+        <label>What services are you looking for?</label>
         <div>
           {[
             "Regular mowing & edging",
