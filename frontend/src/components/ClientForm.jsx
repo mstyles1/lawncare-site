@@ -90,8 +90,8 @@ export default function ClientForm() {
         <div className="form-disclosure">
           <p>
             Just answer a few quick questions to help us get a feel for your
-            property. If your yard is 1 acre or larger, we will reach out to
-            schedule an in-person quote.
+            property. If your yard is <b>1 acre or larger,</b> we will reach out to
+            schedule an <b>in-person quote.</b>
           </p>
         </div>
 
