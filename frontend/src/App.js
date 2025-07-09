@@ -8,7 +8,7 @@ export default function App() {
     <div className="app-container">
       <div className="navbar">
         <Link to="/">Home</Link>
-        <Link to="/clientform">Free Estimate</Link>
+        <Link to="/clientform">Contact</Link>
       </div>
 
       <main>

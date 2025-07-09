@@ -72,8 +72,8 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin: 2rem auto;
   width: 100%;
-  max-width: 65ch;
-  max-height: 40ch;
+  max-width: 60ch;
+  max-height: 38ch;
 }
 
 .title-box img {
@@ -89,17 +89,29 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: left;
+  text-align: center;
 }
 
 .landing-box h2 {
+  font-weight: 1500;
+  text-align: center;
+  color: #175808;
+  margin-bottom: 5px;
+  font-family: "Titler";
+}
+
+.text-box {
   background-color: #175808;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   text-align: center;
   color: white;
+  margin-top: 5px;
   margin-bottom: 5px;
-  font-family: "Titler";
+  padding: 1.3rem;
+  font-style: "Helvetica";
+  font-size: 1.1rem;
+  letter-spacing: .010rem;
 }
 
 .cta-button {
@@ -118,8 +130,8 @@ body {
 
 .cta-button:hover {
   background-color: rgba(255, 255, 255, 0.8);
-  transform: scale(1.1);
-  color: #175808;
+  transform: scale(1.02);
+  color: #134b06;
   box-shadow: 0 10px 6px rgba(0, 0, 0, 0.2);
 }
 
