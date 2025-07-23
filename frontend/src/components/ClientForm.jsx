@@ -81,8 +81,8 @@ export default function ClientForm() {
             <input type="radio" name="hasPets" value="No" />
           </div>
           <div className="form-disclosure">
-            For the safety of your pets and our crew, all pet must be
-            secured prior to our visit.
+            For the safety of your pets and our crew, all pet must be secured
+            prior to our visit.
           </div>
         </div>
 
@@ -99,6 +99,18 @@ export default function ClientForm() {
           <div className="checkbox-row">
             <span>Weed control</span>
             <input type="checkbox" name="services" value="Weed control" />
+          </div>
+          <div className="checkbox-row">
+            <span>Mulch installation</span>
+            <input type="checkbox" name="services" value="Mulch installation" />
+          </div>
+          <div className="checkbox-row">
+            <span>Yard cleanup</span>
+            <input type="checkbox" name="services" value="Yard cleanup" />
+          </div>
+          <div className="checkbox-row">
+            <span>Aeration</span>
+            <input type="checkbox" name="services" value="Aeration" />
           </div>
           <input name="services" placeholder="Other" />
         </div>
