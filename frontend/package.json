@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://mattstyles.github.io/lawncare-site",
+  "homepage": "https://fslawncare.org",
   "proxy": "http://localhost:3001",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",

@@ -47,18 +47,26 @@ export default function ClientForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Convert arrays to comma-separated strings
+    const payload = {
+      ...formData,
+      yardFeatures: formData.yardFeatures.join(", "),
+      services: formData.services.join(", "),
+    };
+
     try {
       const res = await fetch("https://formspree.io/f/xrbklboa", {
-        /*formspree link goes here*/ method: "POST",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
 
       if (res.ok) {
         setMessage("✅ Submitted! Thanks for contacting us.");
+        // Reset form
         setFormData({
           name: "",
           phone: "",
@@ -73,6 +81,8 @@ export default function ClientForm() {
           services: [],
           otherNotes: "",
         });
+        setOtherFeature("");
+        setOtherService("");
       } else {
         const data = await res.json();
         setMessage(data.error || "Submission failed.");
@@ -90,8 +100,8 @@ export default function ClientForm() {
         <div className="form-disclosure">
           <p>
             Just answer a few quick questions to help us get a feel for your
-            property. If your yard is <b>1 acre or larger,</b> we will reach out to
-            schedule an <b>in-person quote.</b>
+            property. If your yard is <b>1 acre or larger,</b> we will reach out
+            to schedule an <b>in-person quote.</b>
           </p>
         </div>
 
@@ -209,6 +219,27 @@ export default function ClientForm() {
               }
             }}
           />
+        </div>
+        <h3>Pets</h3>
+        <label>Do you have any outdoor pets?</label>
+        <p className="form-note">
+          Please note: For the safety of your pets and our crew, all pets must
+          be secured prior to our visit.
+        </p>
+
+        <div>
+          {["Yes", "No"].map((option) => (
+            <div className="checkbox-row" key={option}>
+              <span>{option}</span>
+              <input
+                type="radio"
+                name="hasPets"
+                value={option}
+                checked={formData.hasPets === option}
+                onChange={handleChange}
+              />
+            </div>
+          ))}
         </div>
 
         <h3>Services</h3>
