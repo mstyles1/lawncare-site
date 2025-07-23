@@ -7,10 +7,15 @@ export default function ClientForm() {
         encType="multipart/form-data"
       >
         <h2>🌿 Get a Free Lawn Care Estimate</h2>
-        <div className="form-disclosure">
+        <div className="form-opener">
           Just answer a few quick questions to help us get a feel for your
           property. If your yard is <strong>1 acre or more,</strong> we’ll reach
-          out to schedule an <strong>in-person quote.</strong>
+          out to schedule an <strong>in-person quote.</strong>{" "}
+          Grass above <strong>6 inches</strong> may incur an{" "}
+          <strong>overgrowth charge.</strong>
+        </div>
+        <div className="overgrowth-disclosure">
+          (overgrowth charge is discussed prior to service completion)
         </div>
 
         <h3>Contact Info</h3>
@@ -19,7 +24,12 @@ export default function ClientForm() {
         <label>Phone Number</label>
         <input name="phone" placeholder="(123) 456-7890" required />
         <label>Email</label>
-        <input name="email" placeholder="john@email.com" type="email" required />
+        <input
+          name="email"
+          placeholder="john@email.com"
+          type="email"
+          required
+        />
 
         <label>Street Address</label>
         <input name="street" placeholder="123 Main St" required />
@@ -41,7 +51,6 @@ export default function ClientForm() {
           <option value="¾ acre">¾ acre</option>
           <option value="1 acre or more">1 acre or more</option>
         </select>
-
         <label>Do you have a gate we’ll need to go through?</label>
         <select name="gateSize">
           <option value="">Select one</option>
@@ -57,7 +66,7 @@ export default function ClientForm() {
         />
 
         <h3>Terrain</h3>
-        <label>Select all that describe your yard.</label>
+        <label>Choose all that apply</label>
         <div>
           {["Flat", "Slight hills", "Sloped or steep areas", "Bumpy spots"].map(
             (option) => (
@@ -68,8 +77,8 @@ export default function ClientForm() {
             )
           )}
         </div>
-
         <h3>Yard Features</h3>
+        <label>Choose all that apply</label>
         <div>
           {[
             "Trampoline",
@@ -104,6 +113,7 @@ export default function ClientForm() {
         </div>
 
         <h3>Services</h3>
+        <label>Choose all that apply</label>
         <div>
           <div className="checkbox-row">
             <span>Regular mowing & edging</span>
