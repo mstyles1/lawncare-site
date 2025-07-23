@@ -14,10 +14,23 @@ export default function ClientForm() {
         </div>
 
         <h3>Contact Info</h3>
-        <input name="name" placeholder="Name" required />
-        <input name="phone" placeholder="Phone Number" required />
-        <input name="email" placeholder="Email" type="email" required />
-        <input name="address" placeholder="Property Address" required />
+        <label>Name</label>
+        <input name="name" placeholder="John Smith" required />
+        <label>Phone Number</label>
+        <input name="phone" placeholder="(123) 456-7890" required />
+        <label>Email</label>
+        <input name="email" placeholder="john@email.com" type="email" required />
+
+        <label>Street Address</label>
+        <input name="street" placeholder="123 Main St" required />
+        <label>Apt, Suite, etc. (optional)</label>
+        <input name="apt" placeholder="Apt 1B" />
+        <label>City</label>
+        <input name="city" placeholder="City" required />
+        <label>State</label>
+        <input name="state" placeholder="State" required />
+        <label>ZIP Code</label>
+        <input name="zip" placeholder="ZIP Code" required />
 
         <h3>About Your Yard</h3>
         <label>How big is your yard?</label>
@@ -58,14 +71,18 @@ export default function ClientForm() {
 
         <h3>Yard Features</h3>
         <div>
-          <div className="checkbox-row">
-            <span>Trampoline</span>
-            <input type="checkbox" name="yardFeatures" value="Trampoline" />
-          </div>
-          <div className="checkbox-row">
-            <span>Pool</span>
-            <input type="checkbox" name="yardFeatures" value="Pool" />
-          </div>
+          {[
+            "Trampoline",
+            "Pool",
+            "Garden beds",
+            "Playground equipment",
+            "Tree stumps or large roots",
+          ].map((feature) => (
+            <div className="checkbox-row" key={feature}>
+              <span>{feature}</span>
+              <input type="checkbox" name="yardFeatures" value={feature} />
+            </div>
+          ))}
           <input name="yardFeatures" placeholder="Other" />
         </div>
 
@@ -81,7 +98,7 @@ export default function ClientForm() {
             <input type="radio" name="hasPets" value="No" />
           </div>
           <div className="form-disclosure">
-            For the safety of your pets and our crew, all pet must be secured
+            For the safety of your pets and our crew, all pets must be secured
             prior to our visit.
           </div>
         </div>
@@ -117,9 +134,6 @@ export default function ClientForm() {
 
         <h3>Other Notes</h3>
         <textarea name="otherNotes" />
-
-        <h3>Upload a Photo (optional)</h3>
-        <input type="file" name="photo" accept="image/*" />
 
         <button type="submit">Submit</button>
       </form>
