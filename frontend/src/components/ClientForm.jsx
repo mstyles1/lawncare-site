@@ -1,148 +1,27 @@
-import React, { useState } from "react";
-
 export default function ClientForm() {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    address: "",
-    yardSize: "",
-    gateSize: "",
-    gateInstructions: "",
-    terrain: "",
-    yardFeatures: [],
-    hasPets: "",
-    services: [],
-    otherNotes: "",
-  });
-
-  const [message, setMessage] = useState("");
-  const [otherService, setOtherService] = useState("");
-  const [otherFeature, setOtherFeature] = useState("");
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-
-    if (type === "checkbox" && name === "yardFeatures") {
-      setFormData((prev) => ({
-        ...prev,
-        yardFeatures: checked
-          ? [...prev.yardFeatures, value]
-          : prev.yardFeatures.filter((v) => v !== value),
-      }));
-    } else if (type === "checkbox" && name === "services") {
-      setFormData((prev) => ({
-        ...prev,
-        services: checked
-          ? [...prev.services, value]
-          : prev.services.filter((v) => v !== value),
-      }));
-    } else if (type === "radio") {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Convert arrays to comma-separated strings
-    const payload = {
-      ...formData,
-      yardFeatures: formData.yardFeatures.join(", "),
-      services: formData.services.join(", "),
-    };
-
-    try {
-      const res = await fetch("https://formspree.io/f/xrbklboa", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      if (res.ok) {
-        setMessage("✅ Submitted! Thanks for contacting us.");
-        // Reset form
-        setFormData({
-          name: "",
-          phone: "",
-          email: "",
-          address: "",
-          yardSize: "",
-          gateSize: "",
-          gateInstructions: "",
-          terrain: "",
-          yardFeatures: [],
-          hasPets: "",
-          services: [],
-          otherNotes: "",
-        });
-        setOtherFeature("");
-        setOtherService("");
-      } else {
-        const data = await res.json();
-        setMessage(data.error || "Submission failed.");
-      }
-    } catch (error) {
-      setMessage("Error connecting to Formspree.");
-    }
-  };
-
   return (
     <div className="form-box">
-      <form onSubmit={handleSubmit}>
+      <form
+        action="https://formspree.io/f/xrbklboa"
+        method="POST"
+        encType="multipart/form-data"
+      >
         <h2>🌿 Get a Free Lawn Care Estimate</h2>
-
         <div className="form-disclosure">
-          <p>
-            Just answer a few quick questions to help us get a feel for your
-            property. If your yard is <b>1 acre or larger,</b> we will reach out
-            to schedule an <b>in-person quote.</b>
-          </p>
+          Just answer a few quick questions to help us get a feel for your
+          property. If your yard is <strong>1 acre or more,</strong> we’ll reach
+          out to schedule an <strong>in-person quote.</strong>
         </div>
 
         <h3>Contact Info</h3>
-        <input
-          name="name"
-          placeholder="Name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="phone"
-          placeholder="Phone Number"
-          value={formData.phone}
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="address"
-          placeholder="Property Address"
-          value={formData.address}
-          onChange={handleChange}
-          required
-        />
+        <input name="name" placeholder="Name" required />
+        <input name="phone" placeholder="Phone Number" required />
+        <input name="email" placeholder="Email" type="email" required />
+        <input name="address" placeholder="Property Address" required />
 
         <h3>About Your Yard</h3>
         <label>How big is your yard?</label>
-        <select
-          name="yardSize"
-          value={formData.yardSize}
-          onChange={handleChange}
-          required
-        >
+        <select name="yardSize" required>
           <option value="">Select one</option>
           <option value="¼ acre or less">¼ acre or less</option>
           <option value="½ acre">½ acre</option>
@@ -151,143 +30,86 @@ export default function ClientForm() {
         </select>
 
         <label>Do you have a gate we’ll need to go through?</label>
-        <select
-          name="gateSize"
-          value={formData.gateSize}
-          onChange={handleChange}
-        >
+        <select name="gateSize">
           <option value="">Select one</option>
           <option value="No gate">No gate</option>
-          <option value="Small gate">
-            Yes – small (less than 3 feet wide)
-          </option>
-          <option value="Medium gate">Yes – medium (3 to 4 feet wide)</option>
-          <option value="Large gate">Yes – large (wider than 4 feet)</option>
-          <option value="Not sure">Not sure</option>
+          <option value="Small gate">Small (less than 3ft)</option>
+          <option value="Medium gate">Medium (3-4ft)</option>
+          <option value="Large gate">Large (4ft+)</option>
         </select>
 
         <input
           name="gateInstructions"
           placeholder="Gate code/instructions (if any)"
-          value={formData.gateInstructions}
-          onChange={handleChange}
         />
 
-        <label>What’s the terrain like?</label>
-        <select name="terrain" value={formData.terrain} onChange={handleChange}>
-          <option value="">Select one</option>
-          <option value="Flat">Flat</option>
-          <option value="Slight hills">Slight hills</option>
-          <option value="Steep or sloped areas">Steep or sloped areas</option>
-          <option value="Uneven or bumpy spots">Uneven or bumpy spots</option>
-        </select>
-
-        <label>Anything in the yard we should know about?</label>
+        <h3>Terrain</h3>
+        <label>Select all that describe your yard.</label>
         <div>
-          {[
-            "Trampoline",
-            "Pool or pond",
-            "Garden beds",
-            "Playground equipment",
-            "Tree stumps or large roots",
-          ].map((feature) => (
-            <div className="checkbox-row" key={feature}>
-              <span>{feature}</span>
-              <input
-                type="checkbox"
-                name="yardFeatures"
-                value={feature}
-                checked={formData.yardFeatures.includes(feature)}
-                onChange={handleChange}
-              />
-            </div>
-          ))}
-          <input
-            name="otherFeature"
-            value={otherFeature}
-            placeholder="Other"
-            onChange={(e) => setOtherFeature(e.target.value)}
-            onBlur={() => {
-              if (
-                otherFeature &&
-                !formData.yardFeatures.includes(otherFeature)
-              ) {
-                setFormData((prev) => ({
-                  ...prev,
-                  yardFeatures: [...prev.yardFeatures, otherFeature],
-                }));
-              }
-            }}
-          />
+          {["Flat", "Slight hills", "Sloped or steep areas", "Bumpy spots"].map(
+            (option) => (
+              <div className="checkbox-row" key={option}>
+                <span>{option}</span>
+                <input type="checkbox" name="terrain" value={option} />
+              </div>
+            )
+          )}
         </div>
-        <h3>Pets</h3>
-        <label>Do you have any outdoor pets?</label>
-        <p className="form-note">
-          Please note: For the safety of your pets and our crew, all pets must
-          be secured prior to our visit.
-        </p>
 
+        <h3>Yard Features</h3>
         <div>
-          {["Yes", "No"].map((option) => (
-            <div className="checkbox-row" key={option}>
-              <span>{option}</span>
-              <input
-                type="radio"
-                name="hasPets"
-                value={option}
-                checked={formData.hasPets === option}
-                onChange={handleChange}
-              />
-            </div>
-          ))}
+          <div className="checkbox-row">
+            <span>Trampoline</span>
+            <input type="checkbox" name="yardFeatures" value="Trampoline" />
+          </div>
+          <div className="checkbox-row">
+            <span>Pool</span>
+            <input type="checkbox" name="yardFeatures" value="Pool" />
+          </div>
+          <input name="yardFeatures" placeholder="Other" />
+        </div>
+
+        <h3>Pets</h3>
+        <label>Any outdoor pets?</label>
+        <div>
+          <div className="checkbox-row">
+            <span>Yes</span>
+            <input type="radio" name="hasPets" value="Yes" />
+          </div>
+          <div className="checkbox-row">
+            <span>No</span>
+            <input type="radio" name="hasPets" value="No" />
+          </div>
+          <div className="form-disclosure">
+            For the safety of your pets and our crew, all pet must be
+            secured prior to our visit.
+          </div>
         </div>
 
         <h3>Services</h3>
-        <label>What services are you looking for?</label>
         <div>
-          {[
-            "Regular mowing & edging",
-            "Weed control",
-            "Mulch installation",
-            "Yard cleanup",
-            "Aeration",
-          ].map((service) => (
-            <div className="checkbox-row" key={service}>
-              <span>{service}</span>
-              <input
-                type="checkbox"
-                name="services"
-                value={service}
-                checked={formData.services.includes(service)}
-                onChange={handleChange}
-              />
-            </div>
-          ))}
-          <input
-            name="otherService"
-            value={otherService}
-            placeholder="Other"
-            onChange={(e) => setOtherService(e.target.value)}
-            onBlur={() => {
-              if (otherService && !formData.services.includes(otherService)) {
-                setFormData((prev) => ({
-                  ...prev,
-                  services: [...prev.services, otherService],
-                }));
-              }
-            }}
-          />
+          <div className="checkbox-row">
+            <span>Regular mowing & edging</span>
+            <input
+              type="checkbox"
+              name="services"
+              value="Regular mowing & edging"
+            />
+          </div>
+          <div className="checkbox-row">
+            <span>Weed control</span>
+            <input type="checkbox" name="services" value="Weed control" />
+          </div>
+          <input name="services" placeholder="Other" />
         </div>
 
-        <label>Anything else you'd like us to know?</label>
-        <textarea
-          name="otherNotes"
-          value={formData.otherNotes}
-          onChange={handleChange}
-        />
+        <h3>Other Notes</h3>
+        <textarea name="otherNotes" />
+
+        <h3>Upload a Photo (optional)</h3>
+        <input type="file" name="photo" accept="image/*" />
 
         <button type="submit">Submit</button>
-        <p>{message}</p>
       </form>
     </div>
   );
