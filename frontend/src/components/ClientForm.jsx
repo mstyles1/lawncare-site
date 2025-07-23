@@ -136,8 +136,12 @@ export default function ClientForm() {
             <input type="checkbox" name="services" value="Yard cleanup" />
           </div>
           <div className="checkbox-row">
-            <span>Aeration</span>
-            <input type="checkbox" name="services" value="Aeration" />
+            <span>Bush trimming</span>
+            <input type="checkbox" name="services" value="Bush trimming" />
+          </div>
+          <div className="checkbox-row">
+            <span>Leaf removal</span>
+            <input type="checkbox" name="services" value="Leaf removal" />
           </div>
           <input name="services" placeholder="Other" />
         </div>
