@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.bb73b290.css",
+    "main.css": "/static/css/main.c4963097.css",
     "main.js": "/static/js/main.ae09cfe8.js",
     "static/media/grass-background.jpg": "/static/media/grass-background.d112d20ff2678ce9f5d9.jpg",
     "static/media/OregonLdoDemibold-x3qR.ttf": "/static/media/OregonLdoDemibold-x3qR.466480478d1c3c2b93ed.ttf",
     "index.html": "/index.html",
-    "main.bb73b290.css.map": "/static/css/main.bb73b290.css.map",
+    "main.c4963097.css.map": "/static/css/main.c4963097.css.map",
     "main.ae09cfe8.js.map": "/static/js/main.ae09cfe8.js.map"
   },
   "entrypoints": [
-    "static/css/main.bb73b290.css",
+    "static/css/main.c4963097.css",
     "static/js/main.ae09cfe8.js"
   ]
 }
