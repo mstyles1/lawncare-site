@@ -11,7 +11,7 @@ body {
   overflow-x: hidden;
   background-color: #f9f9f9;
   font-family: sans-serif;
-  background-image: url("../public/images/grass-background.jpg");
+  background-image: url("../public/images/grass-background2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -69,7 +69,7 @@ body {
 
 /* Landing Page */
 .title-box {
-  background-color: rgba(30, 40, 50, .9);
+  background-color: rgba(30, 40, 50, 0.9);
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin: 2rem auto;
@@ -150,18 +150,18 @@ h3 {
 }
 
 .form-opener {
-  margin-bottom: .3rem;
+  margin-bottom: 0.3rem;
   color: black;
   font-weight: bold;
   text-align: center;
 }
 
 .overgrowth-disclosure {
-  margin-bottom: .4rem;
+  margin-bottom: 0.4rem;
   color: black;
   font-weight: bold;
   text-align: right;
-  font-size: .7rem;
+  font-size: 0.7rem;
 }
 
 .form-disclosure {
@@ -231,13 +231,15 @@ form button[type="submit"]:hover {
 
 /* Footer */
 .footer {
-  text-align: center;
+  width: 100%;
   padding: 1rem;
   margin-top: 2rem;
   background-color: #175808;
   color: white;
   border-top: 2px solid rgba(255, 255, 255, 0.8);
   font-size: 0.9rem;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 /* Media */
@@ -252,7 +254,6 @@ form button[type="submit"]:hover {
   /* Styles for screens 600px wide or less */
   body {
     font-size: 14px;
-    padding: 1rem;
   }
 
   .navbar {

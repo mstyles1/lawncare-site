@@ -23,7 +23,7 @@ export default function App() {
       </main>
 
       <footer className="footer">
-        <p>&copy; {new Date().getFullYear()} F & S Lawn Care. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} F&S Lawn Care. All rights reserved.</p>
       </footer>
     </div>
   );
